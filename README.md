@@ -1,7 +1,7 @@
 # JS REST API SDK for BlockSDK
 [![@BLOCKSDK on Twitter](https://img.shields.io/badge/twitter-%40BLOCKSDK-blue.svg)](https://twitter.com/BlockSdk)
 [![@BLOCKSDK on Facebook](https://img.shields.io/badge/facebook-%40BLOCKSDK-blue.svg)](https://www.facebook.com/blocksdk)
-[![NPM version](https://img.shields.io/pypi/v/sagemaker.svg)](https://pypi.python.org/pypi/sagemaker)
+[![NPM version](https://img.shields.io/pypi/v/sagemaker.svg)](https://pypi.python.org/pypi/BlockSDK)
 [![NPM downloads](https://img.shields.io/npm/dm/blocksdk-js.svg)](https://www.npmjs.com/package/blocksdk-js)
 
 __Welcome to BlockSDK PYTHON__. This repository contains BlockSDK's PHP SDK and samples for REST API.
