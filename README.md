@@ -1,8 +1,8 @@
-# JS REST API SDK for BlockSDK
+# PYTHON REST API SDK for BlockSDK
 [![@BLOCKSDK on Twitter](https://img.shields.io/badge/twitter-%40BLOCKSDK-blue.svg)](https://twitter.com/BlockSdk)
 [![@BLOCKSDK on Facebook](https://img.shields.io/badge/facebook-%40BLOCKSDK-blue.svg)](https://www.facebook.com/blocksdk)
 [![PYTHON version](https://img.shields.io/pypi/v/BlockSDK.svg)](https://pypi.python.org/pypi/BlockSDK)
-[![NPM downloads](https://img.shields.io/pypi/pyversions/BlockSDK.svg)](https://pypi.python.org/pypi/BlockSDK)
+[![PYPI downloads](https://img.shields.io/pypi/pyversions/BlockSDK.svg)](https://pypi.python.org/pypi/BlockSDK)
 
 __Welcome to BlockSDK PYTHON__. This repository contains BlockSDK's PHP SDK and samples for REST API.
 
@@ -14,7 +14,7 @@ __Welcome to BlockSDK PYTHON__. This repository contains BlockSDK's PHP SDK and 
 
    - [deasync](https://www.npmjs.com/package/deasync) & [request](https://www.npmjs.com/package/request) extensions must be enabled
    
-### In Node.js
+### In PYTHON
 
 The preferred way to install the BlockSDK for Node.js is to use the
 [npm](http://npmjs.org) package manager for Node.js. Simply type the following
@@ -26,29 +26,29 @@ npm install blocksdk-js
 
 ## Quick Examples
 ### Create an Bitcoin client
-```javascript
+```python
 
-var blockSDK = new BlockSDK("");
-var btcClient = blockSDK.createBitcoin();	
+blockSDK = BlockSDK("")
+btcClient = blockSDK.createBitcoin()
 ```
 ### Get Address info
-```javascript
-var addressInfo = btcClient.getAddressInfo({
+```python
+addressInfo = btcClient.getAddressInfo({
     "address" : "18cBEMRxXHqzWWCxZNtU91F5sbUNKhL5PX",
     "rawtx" : true,
     "reverse" : true,
     "offset" : 0,
     "limit" : 10
-});
+})
 
-console.log(addressInfo);
+print(addressInfo)
 ```
 
 ### Create an Bitcoin Wallet
-```javascript
-var wallet = btcClient.createWallet({
+```python
+wallet = btcClient.createWallet({
     "name" : "test"
-});
+})
 ```
 
 [install-packagist]: https://packagist.org/packages/block-chen/blocksdk-php
