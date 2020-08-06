@@ -7,7 +7,7 @@
 __Welcome to BlockSDK PYTHON__. This repository contains BlockSDK's PHP SDK and samples for REST API.
 
 ## SDK Documentation
-[ Our BlockSDK-JS Page ](https://docs.blocksdk.com/) includes all the documentation related to JS SDK. Sample Codes, to Releases. Here are few quick links to get you there faster.
+[ Our BlockSDK-PYTHON Page ](https://docs.blocksdk.com/) includes all the documentation related to JS SDK. Sample Codes, to Releases. Here are few quick links to get you there faster.
 * [ BlockSDK Developer Docs]
 
 ## Prerequisites
