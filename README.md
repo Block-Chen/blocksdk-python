@@ -16,12 +16,12 @@ __Welcome to BlockSDK PYTHON__. This repository contains BlockSDK's PHP SDK and 
    
 ### In PYTHON
 
-The preferred way to install the BlockSDK for Node.js is to use the
-[npm](http://npmjs.org) package manager for Node.js. Simply type the following
+The preferred way to install the BlockSDK for Python is to use the
+[pypi](https://pypi.org/) package manager for Python. Simply type the following
 into a terminal window:
 
 ```sh
-npm install blocksdk-js
+pip install BlockSDK
 ```
 
 ## Quick Examples
