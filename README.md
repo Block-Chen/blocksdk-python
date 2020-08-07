@@ -3,6 +3,7 @@
 [![@BLOCKSDK on Facebook](https://img.shields.io/badge/facebook-%40BLOCKSDK-blue.svg)](https://www.facebook.com/blocksdk)
 [![PYTHON version](https://img.shields.io/pypi/v/BlockSDK.svg)](https://pypi.python.org/pypi/BlockSDK)
 [![PYPI downloads](https://img.shields.io/pypi/pyversions/BlockSDK.svg)](https://pypi.python.org/pypi/BlockSDK)
+[![DOCS](https://readthedocs.org/projects/sagemaker/badge/?version=stable)](https://docs.blocksdk.com/)
 
 __Welcome to BlockSDK PYTHON__. This repository contains BlockSDK's PHP SDK and samples for REST API.
 
