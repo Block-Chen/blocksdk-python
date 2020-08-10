@@ -1,12 +1,12 @@
-from base import Base
-from dash import Dash
-from bitcoin import Bitcoin
-from ethereum import Ethereum
-from bitcoincash import BitcoinCash
-from monero import Monero
-from webhook import WebHook
-from litecoin import Litecoin
-from price import Price
+from BlockSDK.base import Base
+from BlockSDK.dash import Dash
+from BlockSDK.bitcoin import Bitcoin
+from BlockSDK.ethereum import Ethereum
+from BlockSDK.bitcoincash import BitcoinCash
+from BlockSDK.monero import Monero
+from BlockSDK.webhook import WebHook
+from BlockSDK.litecoin import Litecoin
+from BlockSDK.price import Price
 
 class BlockSDK(Base):
 	def __init__(self, api_token):
