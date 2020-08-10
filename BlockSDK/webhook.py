@@ -1,4 +1,4 @@
-from base import Base
+from BlockSDK.base import Base
 class WebHook(Base):
 	def create(self,request={}):
 		return self.request("POST","/hook",{"callback" : request['callback'],"category" : request['category'],"address" : request['address']})
