@@ -1,4 +1,4 @@
-from base import Base
+from BlockSDK.base import Base
 class Price(Base):
 	def listPrice(self,request = {}):
 			return self.request("GET","/price")
