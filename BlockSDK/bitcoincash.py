@@ -1,4 +1,4 @@
-from base import Base
+from BlockSDK.base import Base
 class BitcoinCash(Base):
 	def getBlockChain(self,request = {}):		
 		return self.request("GET","/bch/block")
