@@ -1,4 +1,4 @@
-from base import Base
+from BlockSDK.base import Base
 class Litecoin(Base):
 	def getBlockChain(self,request = {}):
 			return self.request("GET","/ltc/block")
