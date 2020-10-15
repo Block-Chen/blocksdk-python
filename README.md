@@ -29,7 +29,7 @@ pip install BlockSDK
 ### Create an Bitcoin client
 ```python
 
-blockSDK = BlockSDK("")
+blockSDK = BlockSDK("YOU TOKEN")
 btcClient = blockSDK.createBitcoin()
 ```
 ### Get Address info
