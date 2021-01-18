@@ -1,6 +1,4 @@
 from BlockSDK.base import Base
-class Price(Base):
-	def listPrice(self,request = {}):
-			return self.request("GET","/price")
-# price = Price('B1zZARyW1d2FdqWxPUpB79izHmtAc2Az693WF9DD')
-# print(price.listPrice())
+class Token(Base):
+	def getUsages(self, request = {}):
+		return self.request("POST","/token/usage",{"stat_date" : request['stat_date'],"end_date" : request['end_date']})
