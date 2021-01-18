@@ -66,6 +66,8 @@ class Dash(Base):
 			"limit" : request['limit']
 		})
 
+	def getWallet(self,request = {}):
+		return self.request("GET","/dash/wallets/{request['address']}")
 	
 	def createHdWallet(self,request = {}):
 		if not('name' in request) or not request['name']:
