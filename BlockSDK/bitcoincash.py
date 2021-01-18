@@ -1,26 +1,28 @@
 from BlockSDK.base import Base
 class BitcoinCash(Base):
-	def getBlockChain(self,request = {}):		
+	def getBlockChain(self,request = {}):
 		return self.request("GET","/bch/info")
 	
 	def getBlock(self,request = {}):
 		if not('rawtx' in request) or not request['rawtx']:
 			request['rawtx'] = False
+			
 		if not('offset' in request) or not request['offset']:
 			request['offset'] = 0
 		if not('limit' in request) or not request['limit']:
 			request['limit'] = 10
 		
-		return self.request("GET","/bch/blocks/" + str(request['block']) + "",{
+		return self.request("GET","/bch/blocks/" + str(request['block']),{
 			"rawtx" : request['rawtx'],
 			"offset" : request['offset'],
 			"limit" : request['limit']
 		})
-
+	
 	
 	def getMemPool(self,request = {}):
 		if not('rawtx' in request) or not request['rawtx']:
 			request['rawtx'] = False
+			
 		if not('offset' in request) or not request['offset']:
 			request['offset'] = 0
 		if not('limit' in request) or not request['limit']:
@@ -34,17 +36,17 @@ class BitcoinCash(Base):
 
 	
 	def getAddressInfo(self,request = {}):
-
 		if not('reverse' in request) or not request['reverse']:
 			request['reverse'] = True
 		if not('rawtx' in request) or not request['rawtx']:
-			request['rawtx'] = None
+			request['rawtx'] = False
+		
 		if not('offset' in request) or not request['offset']:
 			request['offset'] = 0
 		if not('limit' in request) or not request['limit']:
 			request['limit'] = 10
 		
-		return self.request("GET","/bch/addresses/" + str(request['address']) + "",{
+		return self.request("GET","/bch/addresses/{request['address']}",{
 			"reverse" : request['reverse'],
 			"rawtx" : request['rawtx'],
 			"offset" : request['offset'],
@@ -53,10 +55,9 @@ class BitcoinCash(Base):
 
 	
 	def getAddressBalance(self,request = {}):
-		return self.request("GET","/bch/addresses/" + str(request['address']) + "/balance")
+		return self.request("GET","/bch/addresses/{request['address']}/balance")
 	 
-	def getWallet(self,request = {}):
-
+	def getWallets(self,request = {}):
 		if not('offset' in request) or not request['offset']:
 			request['offset'] = 0
 		if not('limit' in request) or not request['limit']:
@@ -72,28 +73,26 @@ class BitcoinCash(Base):
 		if not('name' in request) or not request['name']:
 			request['name'] = None
 		
-		return self.request("POST","/bch/wallets/hd",{
+		return self.request("POST","/bch/wallet/hd",{
 			"name" : request['name']
 		})
-
 	
 	def loadWallet(self,request = {}):
+
 		return self.request("POST","/bch/wallets/" + str(request['wallet_id']) + "/load",{
 			"wif" : request['wif'],
 			"password" : request['password']
 		})
 
-	
 	def unloadWallet(self,request = {}):
 		return self.request("POST","/bch/wallets/" + str(request['wallet_id']) + "/unload")
-
 	
 	def getWalletAddress(self,request = {}):
-
 		if not('address' in request) or not request['address']:
 			request['address'] = None
 		if not('hdkeypath' in request) or not request['hdkeypath']:
 			request['hdkeypath'] = None
+		
 		if not('offset' in request) or not request['offset']:
 			request['offset'] = 0
 		if not('limit' in request) or not request['limit']:
@@ -105,10 +104,9 @@ class BitcoinCash(Base):
 			"offset" : request['offset'],
 			"limit" : request['limit']
 		})
-
 	
 	def createWalletAddress(self,request = {}):
-		if not('wif' in request) or not request['seed_wif']:
+		if not('wif' in request) or not request['wif']:
 			request['wif'] = None
 		if not('password' in request) or not request['password']:
 			request['password'] = None
@@ -117,35 +115,33 @@ class BitcoinCash(Base):
 			"wif" : request['wif'],
 			"password" : request['password']
 		})
-		
 	
-	def getWalletBalance(self,request = {}):
-		return self.request("GET","/bch/wallets/" + str(request['wallet_id']) + "/balance")
-
+	def getWalletBalance(self,request = {}):	
+		return self.request("GET","/bch/wallets/" + str(request['wallet_id']) + "/balance")		
+	
 	def getWalletTransactions(self,request = {}):
-
 		if not('order' in request) or not request['order']:
 			request['order'] = 'desc'
-		if not('type' in request) or not request['type']:
-			request['type'] = 'all'
 		if not('offset' in request) or not request['offset']:
 			request['offset'] = 0
 		if not('limit' in request) or not request['limit']:
 			request['limit'] = 10
-		
+		if not('type' in request) or not request['type']:
+			request['type'] = 'all'
+
 		return self.request("GET","/bch/wallets/" + str(request['wallet_id']) + "/transaction",{
 			"type" : request['type'],
 			"order" : request['order'],
 			"offset" : request['offset'],
 			"limit" : request['limit']
 		})
-
-	
+		
 	def sendToAddress(self,request = {}):
 		if(not('kbfee' in request) or not request['kbfee']):
 			blockChain = self.getBlockChain()
 			request['kbfee'] = blockChain['medium_fee_per_kb']
 
+		
 		if not('wif' in request) or not request['wif']:
 			request['wif'] = None
 		if not('password' in request) or not request['password']:
@@ -158,7 +154,6 @@ class BitcoinCash(Base):
 			"password" : request['password'],
 			"kbfee" : request['kbfee']
 		})
-
 	
 	def sendMany(self,request = {}):
 		
@@ -172,7 +167,7 @@ class BitcoinCash(Base):
 			"wif" : request['wif'],
 			"password" : request['password']
 		})
-	
+
 	def sendTransaction(self,request = {}):
 		return self.request("POST","/bch/transactions/send",{
 			"hex" : request['hex']
@@ -180,4 +175,3 @@ class BitcoinCash(Base):
 	
 	def getTransaction(self,request = {}):
 		return self.request("GET","/bch/transactions/" + str(request['hash']) + "")
-	
