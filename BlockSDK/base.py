@@ -5,27 +5,9 @@ import json
 class Base:
 	def __init__(self, api_token):
 		self.api_token = api_token
-	
-	def getUsage(self,request = {}):
-
-		if not('start_date' in request) or not request['start_date']: 
-			d = datetime.today() - timedelta(days=7)
-			request['start_date'] = d.strftime("%Y-%m-%d")
-
-		if not('end_date' in request) or not request['end_date']: 
-			d = datetime.today()
-			request['end_date'] = d.strftime("%Y-%m-%d")
-		return self.request("GET","/usage",{"start_date": request['start_date'],"end_date": request['end_date']})
-
-	def listPrice(self,request = {}):
-		return self.request("GET","/price")
-	
-	def getHashType(self,request = {}):
-		return self.request("GET","/auto/" + request['hash'] + "/type") 
-
 
 	def request(self,method,path,data = {}):
-		url = "https://api.blocksdk.com/v1" + path 
+		url = "https://api.blocksdk.com/v2" + path 
 
 		if method == "GET" and len(data) > 0:
 			url += "?"
