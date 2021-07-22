@@ -28,33 +28,33 @@ class Market(Base):
 			request['to'] = "USD"
        
 		return self.request("GET","/market/trades/",{
-            "from" : request['from'],
-            "to": request['to']
-        })
+		    "from" : request['from'],
+		    "to": request['to']
+		})
     
-    def getRates(self, request = {}):
+    	def getRates(self, request = {}):
        
 		return self.request("GET","/market/rates/" + request['from'],{
-            "to" : request['to'],
-            "from_amount": request['from_amount']
-        })
+		    "to" : request['to'],
+		    "from_amount": request['from_amount']
+		})
     
-    def getExchangeTrades(self, request = {}):
+   	 def getExchangeTrades(self, request = {}):
 		if not('from' in request) or not request['from']:
 			request['from'] = None
 		if not('to' in request) or not request['to']:
 			request['to'] = "USD"
        
 		return self.request("GET","/market/trades/" + request['exchage_id'],{
-            "from" : request['from'],
-            "to": request['to']
-        })
+		    "from" : request['from'],
+		    "to": request['to']
+		})
     
-    def getExchangeRates(self, request = {}):
+   	 def getExchangeRates(self, request = {}):
 		if not('to' in request) or not request['to']:
 			request['to'] = "USD"
        
 		return self.request("GET","/market/rates/" + str(request['exchage_id']) + "/" + str(request['from']),{
-            "to" : request['to'],
-            "from_amount": request['from_amount']
-        })
+		    "to" : request['to'],
+		    "from_amount": request['from_amount']
+		})
