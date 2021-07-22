@@ -28,7 +28,7 @@ pip install BlockSDK
 ## Quick Examples
 ### Create an Bitcoin client
 ```python
-
+from BlockSDK.blocksdk import BlockSDK
 blockSDK = BlockSDK("YOU TOKEN")
 btcClient = blockSDK.createBitcoin()
 ```
