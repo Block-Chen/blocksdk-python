@@ -181,7 +181,7 @@ class BinanceSmart(Base):
 			"limit" : request['limit']
 		})
         
-   	 def getNftBids(self, request = {}):
+   	def getNftBids(self, request = {}):
         	if not('rawtx' in request) or not request['rawtx']:
 			request['rawtx'] = 0
 		if not('order_direction' in request) or not request['order_direction']:
@@ -211,6 +211,104 @@ class BinanceSmart(Base):
 		
 		return self.request("GET","/bsc/bep721-tokens/" + request['contract_address'] + "/" + request['token_id'] + "/transfers",{
 		    "rawtx" : request['rawtx'],
+		    "offset" : request['offset'],
+		    "limit" : request['limit']
+		})
+	
+	def getMultiNft(self, request = {}):
+        	if not('offset' in request) or not request['offset']:
+			request['offset'] = 0
+		if not('limit' in request) or not request['limit']:
+			request['limit'] = 10
+            
+        	return self.request("GET","/bsc/bep1155-tokens/" + request['contract_address'] + "/tokens",{
+            		"offset" : request['offset'],
+            		"limit" : request['limit']
+        	})
+        
+   	def getMultiNftOwnerList(self, request = {}):
+        	if not('offset' in request) or not request['offset']:
+			request['offset'] = 0
+		if not('limit' in request) or not request['limit']:
+			request['limit'] = 10
+            
+		return self.request("GET","/bsc/bep1155-tokens/" + request['contract_address'] + "/" + request['token_id'] + "/list",{
+		    "offset" : request['offset'],
+		    "limit" : request['limit']
+		})
+        
+   	def getMultiNftContractOwner(self, request = {}):
+      	  	if not('offset' in request) or not request['offset']:
+			request['offset'] = 0
+		if not('limit' in request) or not request['limit']:
+			request['limit'] = 10
+            
+		return self.request("GET","/bsc/bep1155-tokens/" + request['contract_address'] + "/" + request['owner_address'] + "/owners",{
+		    "offset" : request['offset'],
+		    "limit" : request['limit']
+		})
+        
+   	def getMultiNftOwner(self, request = {}):
+        	if not('offset' in request) or not request['offset']:
+			request['offset'] = 0
+		if not('limit' in request) or not request['limit']:
+			request['limit'] = 10
+            
+		return self.request("GET","/bsc/bep1155-tokens/" + request['owner_address'] + "/owner",{
+		    "offset" : request['offset'],
+		    "limit" : request['limit']
+		})
+        
+	def getMultiNftContractCreator(self, request = {}):
+		if not('offset' in request) or not request['offset']:
+			request['offset'] = 0
+		if not('limit' in request) or not request['limit']:
+			request['limit'] = 10
+            
+		return self.request("GET","/bsc/bep1155-tokens/" + request['contract_address'] + "/" + request['creator_address'] + "/creators",{
+		    "offset" : request['offset'],
+		    "limit" : request['limit']
+		})
+
+	def getMultiNftCreator(self, request = {}):
+		if not('offset' in request) or not request['offset']:
+			request['offset'] = 0
+		if not('limit' in request) or not request['limit']:
+			request['limit'] = 10
+            
+		return self.request("GET","/bsc/bep1155-tokens/" + request['creator_address'] + "/creator",{
+		    "offset" : request['offset'],
+		    "limit" : request['limit']
+		})
+        
+	def getMultiNftInfo(self, request = {}):           
+		return self.request("GET","/bsc/bep1155-tokens/" + request['contract_address'] + "/" + request['token_id'] + "/info",{
+		})
+        
+	def getMultiNftTransfers(self, request = {}):
+		if not('rawtx' in request) or not request['rawtx']:
+		    request['rawtx'] = 0
+		if not('offset' in request) or not request['offset']:
+			request['offset'] = 0
+		if not('limit' in request) or not request['limit']:
+			request['limit'] = 10
+            
+		return self.request("GET","/bsc/bep1155-tokens/" + request['contract_address'] + "/" + request['token_id'] + "/transfers",{
+		    "rawtx" : $request['rawtx'],
+		    "offset" : request['offset'],
+		    "limit" : request['limit']
+		})
+        
+	def getMultiSaleNfts(self, request = {}):
+		if not('order_direction' in request) or not request['order_direction']:
+			request['order_direction'] = 'desc'
+        	if not('offset' in request) or not request['offset']:
+			request['offset'] = 0
+		if not('limit' in request) or not request['limit']:
+			request['limit'] = 10
+            
+		return self.request("GET","/bsc/bep1155-tokens/" + request['contract_address'] + "/" + request['token_id'] + "/sale",{
+		    "order_direction" : $request['order_direction'],
 		    "offset" : request['offset'],
 		    "limit" : request['limit']
 		})
