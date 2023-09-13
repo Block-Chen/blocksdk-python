@@ -1,45 +1,17 @@
-from BlockSDK.base import Base
-from BlockSDK.dash import Dash
-from BlockSDK.bitcoin import Bitcoin
 from BlockSDK.ethereum import Ethereum
-from BlockSDK.bitcoincash import BitcoinCash
-from BlockSDK.monero import Monero
-from BlockSDK.webhook import WebHook
-from BlockSDK.litecoin import Litecoin
-from BlockSDK.market import Market
-from BlockSDK.token import Token
-from BlockSDK.tool import Tool
+from BlockSDK.avalanche import Avalanche
+from BlockSDK.ethereumclassic import EthereumClassic
+from BlockSDK.klaytn import Klaytn
+from BlockSDK.binancesmart import BinanceSmart
+from BlockSDK.polygon import Polygon
 
-class BlockSDK(Base):
-	def __init__(self, api_token):
-		self.api_token = api_token
 
-	def createBitcoin(self):
-		return Bitcoin(self.api_token)
+class BlockSDK:
 
-	def createEthereum(self):
-		return Ethereum(self.api_token)
-
-	def createLitecoin(self):
-		return Litecoin(self.api_token)
-
-	def createMonero(self):
-		return Monero(self.api_token)
-
-	def createWebHook(self):
-		return WebHook(self.api_token)
-
-	def createDash(self):
-		return Dash(self.api_token)
-
-	def createBitcoinCash(self):
-		return BitcoinCash(self.api_token)
-	
-	def createMarket(self):
-		return Market(self.api_token)
-	
-	def createToken(self):
-		return Token(self.api_token)
-	
-	def createTool(self):
-		return Tool(self.api_token)
+	def __init__(self, api_token, endpoint="https://testnet-api.blocksdk.com"):
+		self.ethereum = Ethereum(api_token=api_token, endpoint=endpoint)
+		self.avalanche = Avalanche(api_token=api_token, endpoint=endpoint)
+		self.ethereum_classic = EthereumClassic(api_token=api_token, endpoint=endpoint)
+		self.klaytn = Klaytn(api_token=api_token, endpoint=endpoint)
+		self.binance_smart = BinanceSmart(api_token=api_token, endpoint=endpoint)
+		self.polygon = Polygon(api_token=api_token, endpoint=endpoint)

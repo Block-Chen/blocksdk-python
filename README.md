@@ -3,56 +3,62 @@
 [![@BLOCKSDK on Facebook](https://img.shields.io/badge/facebook-%40BLOCKSDK-blue.svg)](https://www.facebook.com/blocksdk)
 [![PYTHON version](https://img.shields.io/pypi/v/BlockSDK.svg)](https://pypi.python.org/pypi/BlockSDK)
 [![PYPI downloads](https://img.shields.io/pypi/pyversions/BlockSDK.svg)](https://pypi.python.org/pypi/BlockSDK)
-[![DOCS](https://readthedocs.org/projects/sagemaker/badge/?version=stable)](https://docs-v2.blocksdk.com/)
 
-__Welcome to BlockSDK PYTHON__. This repository contains BlockSDK's PHP SDK and samples for REST API.
+BlockSDK PYTHON에 오신 것을 환영합니다. 이 저장소에는 BlockSDK의 PYTHON SDK와 REST API용 샘플이 포함되어 있습니다.
 
-## SDK Documentation
-[ Our BlockSDK-PYTHON Page ](https://docs.blocksdk.com/) includes all the documentation related to JS SDK. Sample Codes, to Releases. Here are few quick links to get you there faster.
-* [ BlockSDK Developer Docs]
+## 지원중인 블록체인 네트워크
+비트코인 , 라이트코인 , 비트코인 캐시 , 웹후크 는 V2버전 에서 지원되고 있습니다.
+```
+1.이더리움
+2.클레이튼  
+3.바이낸스 스마트 체인
+4.폴리곤
+5.아발란체
+6.이더리움 클래식
+```
+## 개발자 문서
+* [BlockSDK REST API V3 문서](https://documenter.getpostman.com/view/20292093/Uz5FKwxw)
+* [BlockSDK REST API V2 문서](https://docs-v2.blocksdk.com/ko/#fa255f0ccc)
+* [BLOCKSDK PYTHON SDK V3 문서](https://github.com/Block-Chen/blocksdk-python/wiki)
 
-## Prerequisites
+## 요구 사양
 
    - [deasync](https://www.npmjs.com/package/deasync) & [request](https://www.npmjs.com/package/request) extensions must be enabled
    
-### In PYTHON
-
-The preferred way to install the BlockSDK for Python is to use the
-[pypi](https://pypi.org/) package manager for Python. Simply type the following
-into a terminal window:
+## 시작하기
+SDK 설치 – pip를 사용하여 설치 것이 BLOCKSDK PYTHON SDK를 설치하는 권장 방법입니다.
 
 ```sh
 pip install BlockSDK
 ```
 
-## Quick Examples
-### Create an Bitcoin client
+## 코드 샘플
+### 테스트넷 클라이언트 생성
 ```python
 from BlockSDK.blocksdk import BlockSDK
-blockSDK = BlockSDK("YOU TOKEN")
-btcClient = blockSDK.createBitcoin()
+client = BlockSDK(api_token="YOU_TOKEN")
 ```
-### Get Address info
+### 메인넷 클라이언트 생성
+엔드 포인트를 지정해주지 않는경우 테스트넷으로 기본 설정되어 호출 됩니다
+메인넷은 아래 예시와 같이 클라이언트 생성시 두번째 매개변수를 메인넷으로 지정해 주시길 바랍니다.
 ```python
-addressInfo = btcClient.getAddressInfo({
-    "address" : "18cBEMRxXHqzWWCxZNtU91F5sbUNKhL5PX",
-    "rawtx" : true,
-    "reverse" : true,
-    "offset" : 0,
-    "limit" : 10
+from BlockSDK.blocksdk import BlockSDK
+client = BlockSDK(api_token="YOU_TOKEN",endpoint="https://mainnet-api.blocksdk.com")
+```
+### 이더리움 블록체인 정보 가져오기
+```python
+result = client.ethereum.GetBlockChainInfo();
+print(result);
+```
+
+### 이더리움 테스트넷 특정 컨트렉트 NFT 목록 가져오기
+```python
+nfts = client.ethereum.GetSingleNfts({
+    "contract_address": "0xf5de760f2e916647fd766b4ad9e85ff943ce3a2b",
+    "includeMetadata": False,
+    "offset": 0,
+    "limit": 10
 })
 
-print(addressInfo)
+print(nfts)
 ```
-
-### Create an Bitcoin Wallet
-```python
-wallet = btcClient.createWallet({
-    "name" : "test"
-})
-```
-
-[install-packagist]: https://packagist.org/packages/block-chen/blocksdk-php
-[npm]:(http://npmjs.org)
-[packagist]: http://packagist.org
-[BlockSDK Developer Docs]: https://docs.blocksdk.com
